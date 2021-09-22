@@ -7,13 +7,13 @@ import sys
 
 def genPdf(title):
     # TODO:: 需要配置全局路径
-    exePath = "wkhtmltopdf.exe"
+    exePath = "wkhtmltopdf"
     sourcePath = "./htmls/%s.html" % title
     targetPath = "./pdfs/%s.pdf" % title
-    cmd = '"%s" --outline-depth 2 --footer-center [page] "%s" "%s"' % (
+    cmd = '%s %s %s' % (
         exePath, sourcePath, targetPath)
     print(cmd)
-    subprocess.call(cmd)
+    subprocess.run([exePath, sourcePath, targetPath])
 
 
 def downloadAndGenPdf(cid):
@@ -38,13 +38,13 @@ def downloadArticleAndGenPdf(aid):
     download.saveArticleList(aid,  json.dumps([{
         "article_id": artContent["article_id"]
     }]))
-    title = artContent["article_info"]["title"]
+    title = artContent["article_info"]["title"].replace(" ", "")
     print("开始生成html文件")
     mdToHtml.mdToHtml(aid, title)
     print("生成html文件完毕")
     print("开始生成%s.pdf" % title)
     genPdf(title)
-    print("%s.pdf生成完毕" % title)
+    # print("%s.pdf生成完毕" % title)
 
 
 C_ID = '6979380367216082957'
