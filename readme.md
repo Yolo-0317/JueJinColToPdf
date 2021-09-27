@@ -1,5 +1,26 @@
 ### 项目来源：[【玩转掘金】掘金专栏文章正生成pdf文档 ｜Python 主题月](https://juejin.cn/post/6990140519342932004)，在原文代码基础上，修改出适用于unix环境的脚本，并结合Node服务，提供API接口，https://github.com/Yolo-0317/YoloNodeService，最终会提供可视化的交互界面
 
+```
+Node接口  http://www.yoloworld.site:4001/export/exportArticlePdf
+
+Method：POST
+
+request body:
+
+{
+    "articleUrl": "https://juejin.cn/post/7003147063542153224"
+}
+
+response body:
+[
+    "/pdfs/关于鉴权，看懂这篇就够了.pdf"
+]
+
+拼接返回值: http://www.yoloworld.site:4001/pdfs/关于鉴权，看懂这篇就够了.pdf 就可以下载了
+
+
+```
+
 ## 功能介绍
 把掘金**某篇文章**内容下载到本地，并生成pdf文件。
 
