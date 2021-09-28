@@ -1,28 +1,7 @@
-### 项目来源：[【玩转掘金】掘金专栏文章正生成pdf文档 ｜Python 主题月](https://juejin.cn/post/6990140519342932004)，在原文代码基础上，修改出适用于unix环境的脚本，并结合Node服务，提供API接口，https://github.com/Yolo-0317/YoloNodeService，最终会提供可视化的交互界面
 
-```
-Node接口  http://www.yoloworld.site:4001/export/exportArticlePdf
-
-Method：POST
-
-request body:
-
-{
-    "articleUrl": "https://juejin.cn/post/7003147063542153224"
-}
-
-response body:
-[
-    "/pdfs/关于鉴权，看懂这篇就够了.pdf"
-]
-
-拼接返回值: http://www.yoloworld.site:4001/pdfs/关于鉴权，看懂这篇就够了.pdf 就可以下载了
-
-
-```
 
 ## 功能介绍
-把掘金**某篇文章**内容下载到本地，并生成pdf文件。
+把掘金**某个专栏或者文章**内容下载到本地，并生成pdf文件。
 
 生成的pdf功能支持：
 1. 大纲目录
@@ -47,8 +26,7 @@ response body:
 
 
 ## 开发环境
-原文开发文件是windows 10，将main.py进行修改，改为unix开发
-1.  linux/macos
+1.  windows 10
 2.  Python 3.9.1
 
 ## 使用
@@ -58,10 +36,9 @@ response body:
 1. 下载 [wkhtmltopdf](https://wkhtmltopdf.org/), 并配置环境变量
 2. 下载本地项目，进入项目文件
 3. 执行命令 
-acid: 文章ID
+acid: 专栏ID或者文章ID
 type: 默认为专栏`c`，如果是文章请输入`a`
 ```python   
-# python main.py 6989422484722286600 a  例子
 python main.py [acid] [type]
 
 ```

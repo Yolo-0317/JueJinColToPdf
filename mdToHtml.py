@@ -69,8 +69,11 @@ def mdToHtml(cid, name):
     for art in articles:
         article = getJSONData("./datas/%s/%s.json" % (cid, art["article_id"]))
         html = "<h1>%s</h1>" % (article["article_info"]["title"])
-        html += markdown.markdown(
-            removeScheme(article["article_info"]["mark_content"]), extensions=extensions)
+        if article["article_info"]["mark_content"] == '':
+            html += article["article_info"]["content"]
+        else :
+            html += markdown.markdown(
+                removeScheme(article["article_info"]["mark_content"]), extensions=extensions)
         saveFile(fname, html)
         # break
 
